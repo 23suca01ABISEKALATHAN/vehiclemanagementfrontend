@@ -3,7 +3,7 @@ import './VehicleForm.css';
 
 function VehicleForm({ onSubmit, editingVehicle, onUpdate, onCancelEdit }) {
   const [formData, setFormData] = useState({
-    name: '',
+     name: '',
     vehicleType: '',
     chassisNumber: ''
   });
@@ -22,7 +22,7 @@ function VehicleForm({ onSubmit, editingVehicle, onUpdate, onCancelEdit }) {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+       [name]: value
     }));
   };
 
