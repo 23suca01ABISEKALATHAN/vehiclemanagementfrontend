@@ -1,0 +1,58 @@
+.App {
+  min-height: 100vh;
+}
+
+.app-header {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.app-header h1 {
+  color: #667eea;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.app-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  background: #ff4444;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(255, 68, 68, 0.3);
+  animation: slideDown 0.3s ease-out;
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+@media (max-width: 968px) {
+  .content-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
