@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// 🔥 CHANGE THIS LINE (PUT YOUR AZURE BACKEND URL)
-const API_BASE_URL = 'https://vehiclemanagementbackend-b0fgf3d9dafdc6gs.southeastasia-01.azurewebsites.net/';
+const API_BASE_URL = 'https://vehiclemanagementbackend-b0fgf3d9dafdc6gs.southeastasia-01.azurewebsites.net/api/vehicles';
 
 const vehicleService = {
   getAllVehicles: async () => {
