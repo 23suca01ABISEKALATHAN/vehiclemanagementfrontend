@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1774011365907" clover="3.2.0">
+  <project timestamp="1774011365907" name="All files">
+    <metrics statements="13" coveredstatements="12" conditionals="8" coveredconditionals="7" methods="5" coveredmethods="4" elements="26" coveredelements="23" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1"/>
+    <file name="VehicleList.js" path="C:\Users\S. Abisekalathan\vehiclemanagementfrontend\src\components\VehicleList.js">
+      <metrics statements="13" coveredstatements="12" conditionals="8" coveredconditionals="7" methods="5" coveredmethods="4"/>
+      <line num="7" count="6" type="stmt"/>
+      <line num="8" count="2" type="stmt"/>
+      <line num="10" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="20" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="29" count="5" type="stmt"/>
+      <line num="41" count="4" type="stmt"/>
+      <line num="62" count="0" type="stmt"/>
+      <line num="70" count="2" type="stmt"/>
+    </file>
+  </project>
+</coverage>
