@@ -12,7 +12,7 @@ const mockVehicles = [
   }
 ];
 
-// ✅ Test 1: Title rendering
+// Test 1: Title rendering
 test("renders vehicle list title", () => {
   render(
     <VehicleList
@@ -26,7 +26,7 @@ test("renders vehicle list title", () => {
   expect(screen.getByText(/Vehicle List/i)).toBeInTheDocument();
 });
 
-// ✅ Test 2: Vehicle data rendering
+// Test 2: Vehicle data rendering
 test("renders vehicle data", () => {
   render(
     <VehicleList
@@ -41,7 +41,7 @@ test("renders vehicle data", () => {
   expect(screen.getByText("ABC123")).toBeInTheDocument();
 });
 
-// ✅ Test 3: Loading state
+// Test 3: Loading state
 test("shows loading state", () => {
   render(
     <VehicleList
@@ -55,7 +55,7 @@ test("shows loading state", () => {
   expect(screen.getByText(/Loading vehicles/i)).toBeInTheDocument();
 });
 
-// ✅ Test 4: Empty state
+// Test 4: Empty state
 test("shows empty message", () => {
   render(
     <VehicleList
@@ -69,9 +69,9 @@ test("shows empty message", () => {
   expect(screen.getByText(/No vehicles registered/i)).toBeInTheDocument();
 });
 
-// ✅ Test 5: Correct password → delete should happen
+// Test 5: Correct password → delete happens
 test("delete button triggers delete on correct password", () => {
-  window.prompt = jest.fn(() => "1234"); // correct password
+  window.prompt = jest.fn(() => "1234");
   const mockDelete = jest.fn();
 
   render(
@@ -89,9 +89,9 @@ test("delete button triggers delete on correct password", () => {
   expect(mockDelete).toHaveBeenCalled();
 });
 
-// ❌ Test 6: Wrong password → should NOT delete
+// Test 6: Wrong password → no delete
 test("wrong password does not delete vehicle", () => {
-  window.prompt = jest.fn(() => "0000"); // wrong password
+  window.prompt = jest.fn(() => "0000");
   window.alert = jest.fn();
 
   const mockDelete = jest.fn();
