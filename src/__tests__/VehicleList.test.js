@@ -12,59 +12,63 @@ const mockVehicles = [
   }
 ];
 
-// ✅ Test 1: Title rendering
+// Test 1
 test("renders vehicle list title", () => {
   render(
-    <VehicleList
-      vehicles={mockVehicles}
-      loading={false}
-      onEdit={() => {}}
-      onDelete={() => {}}
-    />
+    <VehicleList vehicles={mockVehicles} loading={false} onEdit={() => {}} onDelete={() => {}} />
   );
-
   expect(screen.getByText(/Vehicle List/i)).toBeInTheDocument();
 });
 
-// ✅ Test 2: Vehicle data rendering
+// Test 2
 test("renders vehicle data", () => {
   render(
-    <VehicleList
-      vehicles={mockVehicles}
-      loading={false}
-      onEdit={() => {}}
-      onDelete={() => {}}
-    />
+    <VehicleList vehicles={mockVehicles} loading={false} onEdit={() => {}} onDelete={() => {}} />
   );
-
   expect(screen.getByText("TestCar")).toBeInTheDocument();
   expect(screen.getByText("ABC123")).toBeInTheDocument();
 });
 
-// ✅ Test 3: Loading state
+// Test 3
 test("shows loading state", () => {
   render(
-    <VehicleList
-      vehicles={[]}
-      loading={true}
-      onEdit={() => {}}
-      onDelete={() => {}}
-    />
+    <VehicleList vehicles={[]} loading={true} onEdit={() => {}} onDelete={() => {}} />
   );
-
   expect(screen.getByText(/Loading vehicles/i)).toBeInTheDocument();
 });
 
-// ✅ Test 4: Empty state
+// Test 4
 test("shows empty message", () => {
   render(
-    <VehicleList
-      vehicles={[]}
-      loading={false}
-      onEdit={() => {}}
-      onDelete={() => {}}
-    />
+    <VehicleList vehicles={[]} loading={false} onEdit={() => {}} onDelete={() => {}} />
+  );
+  expect(screen.getByText(/No vehicles registered/i)).toBeInTheDocument();
+});
+
+// Test 5
+test("delete button triggers delete on correct password", () => {
+  window.prompt = jest.fn(() => "1234");
+  const mockDelete = jest.fn();
+
+  render(
+    <VehicleList vehicles={mockVehicles} loading={false} onEdit={() => {}} onDelete={mockDelete} />
   );
 
-  expect(screen.getByText(/No vehicles registered/i)).toBeInTheDocument();
+  screen.getByText(/Delete/i).click();
+  expect(mockDelete).toHaveBeenCalled();
+});
+
+// Test 6
+test("wrong password does not delete vehicle", () => {
+  window.prompt = jest.fn(() => "0000");
+  window.alert = jest.fn();
+
+  const mockDelete = jest.fn();
+
+  render(
+    <VehicleList vehicles={mockVehicles} loading={false} onEdit={() => {}} onDelete={mockDelete} />
+  );
+
+  screen.getByText(/Delete/i).click();
+  expect(mockDelete).not.toHaveBeenCalled();
 });
