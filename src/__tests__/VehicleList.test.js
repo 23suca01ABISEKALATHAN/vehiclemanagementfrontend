@@ -89,7 +89,7 @@ test("delete button triggers delete on correct password", () => {
   expect(mockDelete).toHaveBeenCalled();
 });
 
-// ✅ Test 6: Wrong password → delete should NOT happen
+// ❌ Test 6: Wrong password → should NOT delete
 test("wrong password does not delete vehicle", () => {
   window.prompt = jest.fn(() => "0000"); // wrong password
   window.alert = jest.fn();
