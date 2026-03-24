@@ -12,6 +12,11 @@ const mockVehicles = [
   }
 ];
 
+// 🔥 Reset mocks before each test
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 // Test 1
 test("renders vehicle list title", () => {
   render(
@@ -55,13 +60,14 @@ test("delete button triggers delete on correct password", () => {
   );
 
   screen.getByText(/Delete/i).click();
-  expect(mockDelete).toHaveBeenCalled();
+
+  expect(mockDelete).toHaveBeenCalledTimes(1);
 });
 
 // Test 6
 test("wrong password does not delete vehicle", () => {
-  window.prompt = jest.fn(() => "0000");
-  window.alert = jest.fn();
+  window.prompt = jest.fn(() => "0000"); // ❗ wrong password
+  window.alert = jest.fn(); // ❗ prevent error popup
 
   const mockDelete = jest.fn();
 
@@ -70,5 +76,6 @@ test("wrong password does not delete vehicle", () => {
   );
 
   screen.getByText(/Delete/i).click();
+
   expect(mockDelete).not.toHaveBeenCalled();
 });
