@@ -10,7 +10,7 @@
     "serve": "^14.2.1"
   },
   "scripts": {
-    "start": "serve -s build -l 8080",
+    "start": "npx serve -s build -l 8080",
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject"
