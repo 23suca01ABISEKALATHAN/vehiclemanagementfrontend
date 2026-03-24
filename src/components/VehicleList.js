@@ -2,6 +2,24 @@ import React from 'react';
 import './VehicleList.css';
 
 function VehicleList({ vehicles, loading, onEdit, onDelete }) {
+
+  // 🔐 Password-protected delete
+  const handleDeleteWithPassword = (id) => {
+    const password = window.prompt("Enter 4-digit password to delete:");
+
+    // If user cancels
+    if (password === null) return;
+
+    // If wrong password
+    if (password !== "1234") {
+      window.alert("Incorrect password!");
+      return;
+    }
+
+    // Correct password
+    onDelete(id);
+  };
+
   if (loading) {
     return (
       <div className="vehicle-list-container">
@@ -24,19 +42,25 @@ function VehicleList({ vehicles, loading, onEdit, onDelete }) {
         <div className="vehicle-grid">
           {vehicles.map((vehicle) => (
             <div key={vehicle.id} className="vehicle-card">
+              
               <div className="vehicle-header">
                 <h3>{vehicle.name}</h3>
-                <span className="vehicle-type-badge">{vehicle.vehicleType}</span>
+                <span className="vehicle-type-badge">
+                  {vehicle.vehicleType}
+                </span>
               </div>
               
               <div className="vehicle-details">
                 <div className="detail-row">
                   <span className="detail-label">Chassis No:</span>
-                  <span className="detail-value">{vehicle.chassisNumber}</span>
+                  <span className="detail-value">
+                    {vehicle.chassisNumber}
+                  </span>
                 </div>
               </div>
 
               <div className="vehicle-actions">
+                
                 <button
                   onClick={() => onEdit(vehicle)}
                   className="btn-edit"
@@ -44,14 +68,17 @@ function VehicleList({ vehicles, loading, onEdit, onDelete }) {
                 >
                   ✏️ Edit Name
                 </button>
+
                 <button
-                  onClick={() => onDelete(vehicle.id)}
+                  onClick={() => handleDeleteWithPassword(vehicle.id)} // ✅ FIXED
                   className="btn-delete"
                   title="Delete vehicle"
                 >
                   🗑️ Delete
                 </button>
+
               </div>
+
             </div>
           ))}
         </div>
